@@ -2,7 +2,7 @@ package persistence.dao;
 
 import java.util.List;
 
-import comptes.Compte;
+import persistence.entities.Compte;
 
 public interface CompteDao {
 	void add(Compte c);
