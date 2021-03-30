@@ -1,40 +1,37 @@
-package persistence.entities;
+package beans;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import persistence.dao.CompteDaoimpl;
 
-@Entity
-@Table(name = "compte")
-public class Compte {
+public class CompteBean {
 	
 	private String numCompte;
 	private double solde;
 	private String proprietaire;
 	
-	@Id
-	@Column(name = "numcompte", length = 254)
+
 	public String getNumCompte() {
 		return numCompte;
 	}
 	public void setNumCompte(String numCompte) {
 		this.numCompte = numCompte;
 	}
-	@Column(name = "solde")
+
 	public double getSolde() {
+		CompteDaoimpl c= new CompteDaoimpl();
+		solde = c.findById(numCompte).getSolde();
 		return solde;
 	}
 	public void setSolde(double solde) {
 		this.solde = solde;
 	}
-	@Column(name = "proprietaire", length = 254)
+	
 	public String getProprietaire() {
+		CompteDaoimpl c= new CompteDaoimpl();
+		proprietaire = c.findById(numCompte).getProprietaire();
 		return proprietaire;
 	}
 	public void setProprietaire(String proprietaire) {
 		this.proprietaire = proprietaire;
 	} 
-	
 	
 }
